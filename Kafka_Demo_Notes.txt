@@ -1,0 +1,15 @@
+call zkserver
+set KAFKA_HOME="D:\Coding\kafka_2.12-1.1.0\bin"
+%KAFKA_HOME%\windows\kafka-server-start.bat %KAFKA_HOME%\config\server.properties
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+.\bin\windows\kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 10 --topic test3
+.\bin\windows\kafka-topics --zookeeper localhost:2181 --list
+
+
+.\bin\windows\kafka-consumer-groups  --list  --zookeeper localhost:2181
+.\bin\windows\kafka-consumer-groups  --list --bootstrap-server localhost:9092
+
+.\bin\windows\kafka-consumer-groups  --describe --group GroupA --zookeeper localhost:2181
+.\bin\windows\kafka-consumer-groups  --describe --group GroupA --bootstrap-server localhost:9092
